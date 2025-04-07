@@ -1,14 +1,25 @@
-const http = require('http');
+const express = require("express");
+const app = express();
+const port = process.env.PORT || 3000;
 
-const hostname = '0.0.0.0';
-const port = 3000;
+const products = [
+  { id: 1, name: "MacBook Air", price: 999 },
+  { id: 2, name: "iPhone 15", price: 1099 },
+  { id: 3, name: "Apple Watch", price: 399 }
+];
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('🚀 Hello from your Dockerized DevOps Project!\n');
+app.get("/", (req, res) => {
+  res.send("🚀 Welcome to the Product API running in Docker with CI/CD!");
 });
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+app.get("/api/products", (req, res) => {
+  res.json(products);
+});
+
+app.get("/api/health", (req, res) => {
+  res.send("✅ Healthy!");
+});
+
+app.listen(port, () => {
+  console.log(`Product API listening at http://localhost:${port}`);
 });
