@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MovieStream 🎬</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Netflix Banner -->
+  <header class="banner">
+    <div class="banner-content">
+      <h1 class="banner-title">NETFLIX ORIGINAL</h1>
+      <p class="banner-description">Binge your favorite shows in style — Powered by Docker & DevOps 🚀</p>
+    </div>
+  </header>
+
+  <!-- Movie Row -->
+  <section class="row">
+    <h2>🔥 Trending Now</h2>
+    <div class="row-posters" id="movieRow"></div>
+  </section>
+
+  <footer class="footer">
+    <p>MovieStream &copy; 2025 | Dockerized Netflix-style Web App</p>
+  </footer>
+
+  <script>
+    fetch("http://localhost:3000/api/movies")
+      .then(res => res.json())
+      .then(movies => {
+        const row = document.getElementById("movieRow");
+        movies.forEach(movie => {
+          const img = document.createElement("img");
+          img.className = "row-poster";
+          img.src = movie.thumbnail;
+          img.alt = movie.title;
+          row.appendChild(img);
+        });
+      })
+      .catch(err => console.error("Error loading movies:", err));
+  </script>
+</body>
+</html>
