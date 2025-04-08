@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Movie Details</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      color: white;
+      background-color: #111;
+      overflow-x: hidden;
+    }
+
+    .backdrop {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+    }
+
+    .details {
+      position: relative;
+      text-align: center;
+      max-width: 700px;
+      z-index: 2;
+    }
+
+    .details img {
+      width: 200px;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    }
+
+    .details h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .details p {
+      color: #ccc;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .buttons a {
+      display: inline-block;
+      margin: 0 10px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: 0.3s ease;
+    }
+
+    .btn-play {
+      background-color: red;
+      color: white;
+    }
+
+    .btn-back {
+      background-color: rgba(255,255,255,0.2);
+      color: white;
+    }
+
+    .btn-play:hover {
+      background-color: darkred;
+    }
+
+    .btn-back:hover {
+      background-color: rgba(255,255,255,0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="backdrop" id="backdrop">
+    <div class="overlay"></div>
+    <div class="details">
+      <img id="poster" src="" alt="Movie Poster">
+      <h1 id="title">Loading...</h1>
+      <p id="description">Loading description...</p>
+      <div class="buttons">
+        <a href="#" class="btn-play">▶ Play Now</a>
+        <a href="index.html" class="btn-back">← Back to Home</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+
+    const posters = {
+      batman: {
+        title: 'The Batman',
+        image: 'https://i.imgur.com/0rVeh4B.jpg',
+        backdrop: 'https://i.imgur.com/bqqPqFG.jpg',
+        description: 'In the shadows of Gotham, Batman seeks vengeance and justice.'
+      },
+      dune: {
+        title: 'Dune',
+        image: 'https://i.imgur.com/V8eE9eG.jpg',
+        backdrop: 'https://i.imgur.com/G3Eo8lH.jpg',
+        description: 'A mythic and emotionally charged hero’s journey.'
+      },
+      'stranger-things': {
+        title: 'Stranger Things',
+        image: 'https://i.imgur.com/qNbQzP5.jpg',
+        backdrop: 'https://i.imgur.com/QLfrOGZ.jpg',
+        description: 'When a boy vanishes, a small town uncovers a mystery involving secret experiments.'
+      },
+      'john-wick': {
+        title: 'John Wick',
+        image: 'https://i.imgur.com/nvwzVqE.jpg',
+        backdrop: 'https://i.imgur.com/V4knz3m.jpg',
+        description: 'A retired hitman seeks vengeance for the death of his beloved dog.'
+      },
+      'spider-man': {
+        title: 'Spider-Man: No Way Home',
+        image: 'https://i.imgur.com/IWZJOmu.jpg',
+        backdrop: 'https://i.imgur.com/CvM9v6s.jpg',
+        description: 'Peter Parker faces multiverse chaos with help from unexpected allies.'
+      },
+      'witcher': {
+        title: 'The Witcher',
+        image: 'https://i.imgur.com/wEoAsM7.jpg',
+        backdrop: 'https://i.imgur.com/A2HtAf4.jpg',
+        description: 'A mutated monster hunter struggles to find his place in a world.'
+      },
+      'squid-game': {
+        title: 'Squid Game',
+        image: 'https://i.imgur.com/Td9VfAd.jpg',
+        backdrop: 'https://i.imgur.com/kzov1Xz.jpg',
+        description: 'Hundreds risk their lives in mysterious survival games for a massive prize.'
+      }
+    };
+
+    const movie = posters[id] || {
+      title: 'Unknown Movie',
+      image: 'https://i.imgur.com/XxIG2Xa.jpg',
+      backdrop: 'https://i.imgur.com/XxIG2Xa.jpg',
+      description: 'Description not available.'
+    };
+
+    document.getElementById('title').textContent = movie.title;
+    document.getElementById('poster').src = movie.image;
+    document.getElementById('description').textContent = movie.description;
+    document.getElementById('backdrop').style.backgroundImage = `url('${movie.backdrop}')`;
+  </script>
+
+</body>
+</html>

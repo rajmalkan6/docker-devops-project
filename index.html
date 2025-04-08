@@ -2,43 +2,64 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MovieStream 🎬</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MovieStream - Netflix Style</title>
+  <link rel="stylesheet" href="main.css">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Netflix Banner -->
-  <header class="banner">
-    <div class="banner-content">
-      <h1 class="banner-title">NETFLIX ORIGINAL</h1>
-      <p class="banner-description">Binge your favorite shows in style — Powered by Docker & DevOps 🚀</p>
-    </div>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">🍿 MovieStream</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">TV Shows</a>
+      <a href="#">Movies</a>
+      <a href="#">My List</a>
+    </nav>
   </header>
 
-  <!-- Movie Row -->
-  <section class="row">
-    <h2>🔥 Trending Now</h2>
-    <div class="row-posters" id="movieRow"></div>
+ 
+  <section class="hero">
+    <div class="overlay">
+      <h1 class="title">The Batman</h1>
+      <p class="description">Vengeance has arrived in Gotham. Watch now.</p>
+      <div class="buttons">
+        <a href="movie.html?id=batman" class="btn-play">▶ Play</a>
+        <a href="movie.html?id=batman" class="btn-info">ℹ Info</a>
+      </div>
+    </div>
   </section>
 
-  <footer class="footer">
-    <p>MovieStream &copy; 2025 | Dockerized Netflix-style Web App</p>
+
+  <section class="movie-category">
+    <h2>🔥 Trending Now</h2>
+    <div class="movie-row">
+      <a class="movie-card" href="movie.html?id=dune">
+        <img src="https://i.imgur.com/V8eE9eG.jpg" alt="Dune" />
+      </a>
+      <a class="movie-card" href="movie.html?id=stranger-things">
+        <img src="https://i.imgur.com/qNbQzP5.jpg" alt="Stranger Things" />
+      </a>
+      <a class="movie-card" href="movie.html?id=john-wick">
+        <img src="https://i.imgur.com/nvwzVqE.jpg" alt="John Wick" />
+      </a>
+      <a class="movie-card" href="movie.html?id=spider-man">
+        <img src="https://i.imgur.com/IWZJOmu.jpg" alt="Spider-Man" />
+      </a>
+      <a class="movie-card" href="movie.html?id=witcher">
+        <img src="https://i.imgur.com/wEoAsM7.jpg" alt="The Witcher" />
+      </a>
+      <a class="movie-card" href="movie.html?id=squid-game">
+        <img src="https://i.imgur.com/Td9VfAd.jpg" alt="Squid Game" />
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 MovieStream | Netflix-style DevOps Project</p>
   </footer>
 
-  <script>
-    fetch("http://localhost:3000/api/movies")
-      .then(res => res.json())
-      .then(movies => {
-        const row = document.getElementById("movieRow");
-        movies.forEach(movie => {
-          const img = document.createElement("img");
-          img.className = "row-poster";
-          img.src = movie.thumbnail;
-          img.alt = movie.title;
-          row.appendChild(img);
-        });
-      })
-      .catch(err => console.error("Error loading movies:", err));
-  </script>
 </body>
 </html>

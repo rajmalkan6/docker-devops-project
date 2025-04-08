@@ -1,12 +1,6 @@
-FROM node:18
+FROM nginx:alpine
 
-WORKDIR /app
+WORKDIR /usr/share/nginx/html
+RUN rm -rf ./*
 
-COPY package.json ./
-RUN npm install
-
-COPY server.js .
-
-EXPOSE 3000
-
-CMD ["node", "server.js"]
+COPY . .
