@@ -1,114 +1,69 @@
 body {
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
-    background-color: #141414;
-    color: white;
-    overflow-x: hidden;
-  }
-  
-  .navbar {
-    background-color: #000;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .logo {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: red;
-  }
-  
-  .navbar nav a {
-    color: #fff;
-    text-decoration: none;
-    margin-left: 20px;
-    font-weight: 500;
-  }
-  
-  .hero {
-    position: relative;
-    background-image: url('https://i.imgur.com/XxIG2Xa.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 65vh;
-    display: flex;
-    align-items: flex-end;
-    color: white;
-  }
-  
-  .overlay {
-    background: rgba(0, 0, 0, 0.5);
-    padding: 2rem;
-    width: 100%;
-  }
-  
-  .title {
-    font-size: 2.5rem;
-    margin: 0;
-  }
-  
-  .description {
-    margin: 10px 0;
-    max-width: 500px;
-  }
-  
-  .buttons a {
-    padding: 10px 20px;
-    font-size: 1rem;
-    border: none;
-    font-weight: bold;
-    margin-right: 10px;
-    cursor: pointer;
-    text-decoration: none;
-  }
-  
-  .btn-play {
-    background-color: red;
-    color: white;
-  }
-  
-  .btn-info {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: white;
-  }
-  
-  .movie-category {
-    padding: 1rem 2rem;
-  }
-  
-  .movie-row {
-    display: flex;
-    overflow-x: auto;
-    gap: 10px;
-    padding: 1rem 0;
-  }
-  
-  .movie-row::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .movie-card {
-    flex: 0 0 auto;
-    width: 160px;
-    transition: transform 0.3s ease;
-  }
-  
-  .movie-card img {
-    width: 100%;
-    border-radius: 5px;
-  }
-  
-  .movie-card:hover {
-    transform: scale(1.08);
-  }
-  
-  footer {
-    text-align: center;
-    padding: 1rem;
-    font-size: 0.8rem;
-    background-color: #000;
-    color: #888;
-  }
-  
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #111;
+  color: white;
+}
+
+/* Hero banner styling */
+.hero {
+  background-image: url('images/batman.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+  color: white;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Trending section */
+.trending {
+  padding: 20px;
+}
+
+.trending h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.movies-row {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  padding: 10px 0;
+}
+
+.movies-row img {
+  width: 150px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.movies-row img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
+}
