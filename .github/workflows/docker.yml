@@ -29,4 +29,3 @@ jobs:
           file: Dockerfile.frontend
           push: true
           tags: rajmalkan6/movie-frontend:latest
-git add .
