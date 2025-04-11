@@ -1,6 +1,17 @@
-FROM nginx:alpine
+FROM node:18
 
-WORKDIR /usr/share/nginx/html
-RUN rm -rf ./*
+
+WORKDIR /app
+
+
+COPY package.json .
+RUN npm install
+
 
 COPY . .
+
+
+EXPOSE 3000
+
+
+CMD ["npm", "start"]
